@@ -1,20 +1,28 @@
 var eejs = require('ep_etherpad-lite/node/eejs/');
 var settings = require('ep_etherpad-lite/node/utils/Settings');
 
-if(settings.ep_piwik.url){
-  var piwikUrl = settings.ep_piwik.url;
-}else{
-  var piwikUrl = false;
-}
+if(settings.ep_piwik){
+  var piwikSettings = true;
+  if(settings.ep_piwik.url){
+    var piwikUrl = settings.ep_piwik.url;
+  }else{
+    var piwikUrl = false;
+  }
 
-if(settings.ep_piwik.siteId){
-  var piwikSiteId = settings.ep_piwik.siteId;
-}else{
-  var piwikSiteId = false;
+  if(settings.ep_piwik.siteId){
+    var piwikSiteId = settings.ep_piwik.siteId;
+  }else{
+    var piwikSiteId = false;
+  }
+} else {
+  var piwikSettings = false;
 }
 
 exports.eejsBlock_scripts = function (hook_name, args, cb) {
-  if(!piwikUrl){
+  if(!piwikSettings){
+    var piwikString = "<script>alert('ep_piwik not set in settings.json, insert it in /admin/settings')</script>";
+  }
+  else if(!piwikUrl){
     var piwikString = "<script>alert('ep_piwik.url not set in settings.json, insert it in /admin/settings')</script>";
   }
   else if(!piwikSiteId) {
