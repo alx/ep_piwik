@@ -1,7 +1,7 @@
 {
   "name": "ep_piwik",
   "description": "Add Piwik to Etherpad Lite -- IMPORTANT: Add the following to your settings.json file --   \"ep_piwik\":{\"url\":\"piwik.installation.com\",\"site_id\":\"1\"}",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": {
     "name": "Alexandre Girard",
     "email": "alex@tactac.cat",
