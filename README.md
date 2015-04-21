@@ -1,8 +1,8 @@
 Etherpad plugin to insert Piwik analytics code inside a pad.
 
 This is a fork from
-[ep_googleanalytics][https://github.com/JohnMcLear/ep_google_analytics]
-by [John McLear][https://github.com/JohnMcLear].
+[ep_googleanalytics](https://github.com/JohnMcLear/ep_google_analytics)
+by [John McLear](https://github.com/JohnMcLear).
 
 # Installation
 
