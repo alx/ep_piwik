@@ -1,0 +1,10 @@
+{
+  "parts":[
+    {
+      "name": "piwik",
+      "hooks": {
+        "eejsBlock_scripts": "ep_piwik/index"
+      }
+    }
+  ]
+}

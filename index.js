@@ -1,0 +1,31 @@
+var eejs = require('ep_etherpad-lite/node/eejs/');
+var settings = require('ep_etherpad-lite/node/utils/Settings');
+
+if(settings.ep_piwik.url){
+  var piwikUrl = settings.ep_piwik.url;
+}else{
+  var piwikUrl = false;
+}
+
+if(settings.ep_piwik.siteId){
+  var piwikSiteId = settings.ep_piwik.siteId;
+}else{
+  var piwikSiteId = false;
+}
+
+exports.eejsBlock_scripts = function (hook_name, args, cb) {
+  if(!piwikUrl){
+    var piwikString = "<script>alert('ep_piwik.url not set in settings.json, insert it in /admin/settings')</script>";
+  }
+  else if(!piwikSiteId) {
+    var piwikString = "<script>alert('ep_piwik.site_id not set in settings.json, insert it in /admin/settings')</script>";
+  }
+  else {
+    var piwikString = "<script type='text/javascript'>var _paq = _paq || [];_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);(function() {var u=\"// " + piwikUrl + "/\";_paq.push(['setTrackerUrl', u+'piwik.php']);_paq.push(['setSiteId', " + piwikSiteId + " ]);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);})();</script>";
+  }
+
+  args.content = args.content + piwikString; // add Piwik to the contents
+  return cb();
+}
+
+
