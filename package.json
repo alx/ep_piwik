@@ -7,8 +7,6 @@
     "email": "alex@tactac.cat",
     "url": "http://alexgirard.com"
   },
-  "contributors": [],
-  "dependencies": {},
   "repository" : {
     "type" : "git",
     "url"  : "https://github.com/alx/ep_piwik"
